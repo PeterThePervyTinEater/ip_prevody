@@ -74,7 +74,7 @@
             this.groupBox1.Size = new System.Drawing.Size(155, 178);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
+            this.groupBox1.Text = "From";
             // 
             // inHex
             // 
@@ -121,7 +121,7 @@
             this.groupBox2.Size = new System.Drawing.Size(155, 178);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "groupBox2";
+            this.groupBox2.Text = "To";
             // 
             // outHex
             // 
