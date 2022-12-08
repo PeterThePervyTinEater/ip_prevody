@@ -44,6 +44,19 @@ namespace ip_prevody
             return true;
         }
 
+        bool kontrolaDec(string dec)
+        {
+            string[] arr = dec.Split('.');
+            foreach (string s in arr)
+            {
+                foreach (char c in s)
+                {
+                    if (!(c >= '0' && c <= '9')) return false;
+                }
+            }
+            return true;
+        }
+
         string binToDec(string bin)
         {
             string[] arr = bin.Split('.');
@@ -137,21 +150,25 @@ namespace ip_prevody
 
             if(inDec.Checked)
             {
-                if(outDec.Checked)
-                {
-                    labVysNadpis.Text = "Výsledek v decimální: ";
-                    labVys.Text = value;
+                if (kontrolaDec(value))
+                { 
+                    if(outDec.Checked)
+                    {
+                        labVysNadpis.Text = "Výsledek v decimální: ";
+                        labVys.Text = value;
+                    }
+                    else if(outBin.Checked)
+                    {
+                        labVysNadpis.Text = "Výsledek v binární: ";
+                        labVys.Text = decToBin(value);
+                    }
+                    else if(outHex.Checked)
+                    {
+                        labVysNadpis.Text = "Výsledek v hexadecimální: ";
+                        labVys.Text = decToHex(value);
+                    }
                 }
-                else if(outBin.Checked)
-                {
-                    labVysNadpis.Text = "Výsledek v binární: ";
-                    labVys.Text = decToBin(value);
-                }
-                else if(outHex.Checked)
-                {
-                    labVysNadpis.Text = "Výsledek v hexadecimální: ";
-                    labVys.Text = decToHex(value);
-                }
+                else MessageBox.Show("Znaky v decimální soustavì musí být v rozsahu <0,9>", "Varování", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); //Alerting user for wrong formating
             }
 
             //Converting from bin
@@ -176,7 +193,7 @@ namespace ip_prevody
                         labVys.Text = binToHex(value);
                     }
                 }
-                else MessageBox.Show("Znaky v hexadecimální soustavì musí být v rozsahu <0,1>", "Varování", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); //Alerting user for wrong formating
+                else MessageBox.Show("Znaky v binární soustavì musí být v rozsahu <0,1>", "Varování", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); //Alerting user for wrong formating
             }
 
             //Converting from hex
